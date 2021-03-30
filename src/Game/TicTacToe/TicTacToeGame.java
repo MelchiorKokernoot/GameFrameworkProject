@@ -1,8 +1,7 @@
 package Game.TicTacToe;
 
 
-import Game.Game;
-import Game.GameBoard;
+import Game.*;
 
 public class TicTacToeGame extends Game {
 
@@ -13,9 +12,20 @@ public class TicTacToeGame extends Game {
         this.yPositions = 3;
 
         setBoard(new GameBoard(xPositions, yPositions));
+        resetInitialBoardState();
     }
 
-    public boolean moveLegal(int x, int y){
+    @Override
+    public boolean moveLegal() {
         return true;
+    }
+
+    @Override
+    protected void resetInitialBoardState() {
+        for (BoardPosition[] row : getBoard()) {
+            for (BoardPosition column : row) {
+                column.setState(TicTacToePositionState.EMPTY_STATE);
+            }
+        }
     }
 }

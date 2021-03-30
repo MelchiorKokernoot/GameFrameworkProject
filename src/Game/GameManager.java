@@ -15,8 +15,13 @@ public class GameManager {
         return game;
     }
 
-    public GameBoard getBoard(){
-        return this.game.getBoard();
+    public void getBoardState() {
+        for (BoardPosition[] row : this.game.getBoard()) {
+            for (BoardPosition column : row) {
+                System.out.print(column.getState());
+            }
+            System.out.println("");
+        }
     }
 
     public void setGame(Game game) {
@@ -29,5 +34,13 @@ public class GameManager {
 
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
+    }
+
+    public void setNewStateAtXY(int x, int y, int newState) {
+        this.game.getGameBoardObject().setBoardPositionState(x, y, newState);
+    }
+
+    public int getStateAtXY(int x, int y) {
+        return this.game.getGameBoardObject().getBoardPositionState(x, y);
     }
 }

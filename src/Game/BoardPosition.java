@@ -1,13 +1,13 @@
 package Game;
 
-abstract class BoardPosition {
-    PositionState state;
+public class BoardPosition {
+    protected int state;
 
-    public PositionState getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(PositionState state) {
+    public void setState(int state) {
         this.state = state;
     }
 }
